@@ -1,45 +1,33 @@
-import pygame
-import sys
+import pygame, sys
+
 
 class Game():
-    
-    corredores = []
+    runners = []
+    __startLine = 20
+    __finishLine = 620
     
     def __init__(self):
+        self.__screen = pygame.display.set_mode((640,480))
+        self.__background = pygame.image.load("images/backgound.png")
+        pygame.display.set_caption("Carrera de bichos")
         
-        self.__screen = pygame.display.set_mode((640, 480))
-        pygame.display.set_caption("Carrea de bichos")
-        #self.background = pygame.image.load("images/background.png")
-        
-        #self.runner = pygame.image.load("images/smallball.png")
-        
-        def competir(self):
+    def competir(self):
+        gameOver = False
+        while not gameOver:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    gameOver = True
             
-            x = 0
-            hayGanador = False
+            self.__screen.blit(self.__background, (0,0))
             
-            while not hayGanador:
-                # Comprobación de los eventos
-                for event in paygame.event.get():
-                    if event.type == pygame.QUIT:
-                        pygame.quit()
-                        sys.exit()
-                
-                #Refrescar / renderizar la pantalla
-                self.__screen.blit(self.background. (0, 0))
-                self.__screen.blit(self.runner, (x, 240))
-                pygame.display.flip()
-                
-                x += 3
-                if x >= 250:
-                    hayGanador = True
-                
-                
-            pygame.quit()
-            sys.quit()
-                                   
+            pygame.display.flip()
         
+        pygame.quit()
+        sys.exit()
+    
+    
 if __name__ == '__main__':
-    pygame.init()
     game = Game()
+    pygame.init()
     game.competir()
+    
